@@ -16,6 +16,6 @@ library(tidyverse)
 library(palmerpenguins)
 ```
 
-```{r}
+```
 glimpse(penguins)
 ```

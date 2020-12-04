@@ -1,0 +1,15 @@
+---
+title: Exploration of NFL data
+author: ~
+date: '2020-12-02'
+slug: exploration-of-nfl-data
+categories: []
+tags: []
+---
+
+
+```{r}
+# load NFL data
+```
+
+From this data ...
