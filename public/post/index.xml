@@ -22,9 +22,9 @@
       <pubDate>Wed, 02 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>/2020/12/02/my-first-post/</guid>
-      <description>  My first post.
+      <description>My first post.
 I like the penguins
-library(tidyverse) library(palmerpenguins) glimpse(penguins) </description>
+library(tidyverse) library(palmerpenguins) glimpse(penguins) library(here) ## here() starts at /home/dasc/DASC-blog dat &amp;lt;- read_csv(here(&amp;quot;data&amp;quot;, &amp;quot;2012-18_playerBoxScore.csv&amp;quot;)) ## Parsed with column specification: ## cols( ## .default = col_double(), ## gmDate = col_date(format = &amp;quot;&amp;quot;), ## gmTime = col_time(format = &amp;quot;&amp;quot;), ## seasTyp = col_character(), ## playLNm = col_character(), ## playFNm = col_character(), ## teamAbbr = col_character(), ## teamConf = col_character(), ## teamDiv = col_character(), ## teamLoc = col_character(), ## teamRslt = col_character(), ## offLNm1 = col_character(), ## offFNm1 = col_character(), ## offLNm2 = col_character(), ## offFNm2 = col_character(), ## offLNm3 = col_character(), ## offFNm3 = col_character(), ## playDispNm = col_character(), ## playStat = col_character(), ## playPos = col_character(), ## playBDate = col_date(format = &amp;quot;&amp;quot;) ## # .</description>
     </item>
     
     <item>
