@@ -19,3 +19,18 @@ library(palmerpenguins)
 ```
 glimpse(penguins)
 ```
+
+```{r}
+library(here)
+dat <- read_csv(here("data", "2012-18_playerBoxScore.csv"))
+```
+
+```{r}
+glimpse(dat)
+```
+
+```{r}
+ggplot(dat, aes(x = playPos, y = `play3P%`)) +
+geom_boxplot()
+```
+
