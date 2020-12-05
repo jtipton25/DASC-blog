@@ -27,15 +27,5 @@ I like the penguins
 library(tidyverse) library(palmerpenguins) glimpse(penguins) library(here) ## here() starts at /home/dasc/DASC-blog dat &amp;lt;- read_csv(here(&amp;quot;data&amp;quot;, &amp;quot;2012-18_playerBoxScore.csv&amp;quot;)) ## Parsed with column specification: ## cols( ## .default = col_double(), ## gmDate = col_date(format = &amp;quot;&amp;quot;), ## gmTime = col_time(format = &amp;quot;&amp;quot;), ## seasTyp = col_character(), ## playLNm = col_character(), ## playFNm = col_character(), ## teamAbbr = col_character(), ## teamConf = col_character(), ## teamDiv = col_character(), ## teamLoc = col_character(), ## teamRslt = col_character(), ## offLNm1 = col_character(), ## offFNm1 = col_character(), ## offLNm2 = col_character(), ## offFNm2 = col_character(), ## offLNm3 = col_character(), ## offFNm3 = col_character(), ## playDispNm = col_character(), ## playStat = col_character(), ## playPos = col_character(), ## playBDate = col_date(format = &amp;quot;&amp;quot;) ## # .</description>
     </item>
     
-    <item>
-      <title>A Plain Markdown Post</title>
-      <link>/2016/12/30/a-plain-markdown-post/</link>
-      <pubDate>Fri, 30 Dec 2016 21:49:57 -0700</pubDate>
-      
-      <guid>/2016/12/30/a-plain-markdown-post/</guid>
-      <description>This is a post written in plain Markdown (*.md) instead of R Markdown (*.Rmd). The major differences are:
- You cannot run any R code in a plain Markdown document, whereas in an R Markdown document, you can embed R code chunks (```{r}); A plain Markdown post is rendered through Blackfriday, and an R Markdown document is compiled by rmarkdown and Pandoc.  There are many differences in syntax between Blackfriday&amp;rsquo;s Markdown and Pandoc&amp;rsquo;s Markdown.</description>
-    </item>
-    
   </channel>
 </rss>

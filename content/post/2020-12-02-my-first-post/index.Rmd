@@ -34,5 +34,15 @@ ggplot(dat, aes(x = playPos, y = `play3P%`)) +
 geom_boxplot()
 ```
 
-This change isn't updated... still not updated... this will update and so will this
+```{r}
+## try and load tidytuesday data
+aus_temp <- read_csv(here::here("data", "tidytuesday", "data", "2020", "2020-01-07", "temperature.csv"))
+```
+
+```{r}
+aus_temp %>%
+    filter(city_name == "PERTH", date >= "2000-01-01") %>%
+    ggplot(aes(x = date, y = temperature, color = temp_type)) +
+    geom_line()
+```
 

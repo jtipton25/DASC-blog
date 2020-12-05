@@ -168,7 +168,21 @@ library(palmerpenguins)</code></pre>
 <pre class="r"><code>ggplot(dat, aes(x = playPos, y = `play3P%`)) +
 geom_boxplot()</code></pre>
 <p><img src="index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
-<p>This change isn’t updated… still not updated… this will update and so will this</p>
+<pre class="r"><code>## try and load tidytuesday data
+aus_temp &lt;- read_csv(here::here(&quot;data&quot;, &quot;tidytuesday&quot;, &quot;data&quot;, &quot;2020&quot;, &quot;2020-01-07&quot;, &quot;temperature.csv&quot;))</code></pre>
+<pre><code>## Parsed with column specification:
+## cols(
+##   city_name = col_character(),
+##   date = col_date(format = &quot;&quot;),
+##   temperature = col_double(),
+##   temp_type = col_character(),
+##   site_name = col_character()
+## )</code></pre>
+<pre class="r"><code>aus_temp %&gt;%
+    filter(city_name == &quot;PERTH&quot;, date &gt;= &quot;2000-01-01&quot;) %&gt;%
+    ggplot(aes(x = date, y = temperature, color = temp_type)) +
+    geom_line()</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 
     </div>
   </article>
