@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.11.30)  2 DEC 2020 13:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.11.30)  4 DEC 2020 13:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -912,7 +912,7 @@ c/.TinyTeX/texmf-dist/fonts/type1/public/lm/lmr9.pfb></home/dasc/.TinyTeX/texmf
 -dist/fonts/type1/public/lm/lmri10.pfb></home/dasc/.TinyTeX/texmf-dist/fonts/ty
 pe1/public/lm/lmri8.pfb></home/dasc/.TinyTeX/texmf-dist/fonts/type1/public/lm/l
 mssbx10.pfb></home/dasc/.TinyTeX/texmf-dist/fonts/type1/public/lm/lmtt9.pfb>
-Output written on resume-example.pdf (2 pages, 259436 bytes).
+Output written on resume-example.pdf (2 pages, 259580 bytes).
 PDF statistics:
  146 PDF objects out of 1000 (max. 8388607)
  129 compressed objects within 2 object streams
