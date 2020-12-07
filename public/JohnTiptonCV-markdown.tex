@@ -1,0 +1,676 @@
+\documentclass[11pt,]{article}
+\usepackage[sc, osf]{mathpazo}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+
+
+
+
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+% JRT added 2020-11-18
+\usepackage{multicol}
+
+% Now begins the stuff that I added.
+% ----------------------------------
+
+% Custom section fonts
+\usepackage{sectsty}
+\sectionfont{\rmfamily\mdseries\large\bf}
+\subsectionfont{\rmfamily\mdseries\normalsize\scshape}
+
+
+% Make lists without bullets
+\renewenvironment{itemize}{
+  \begin{list}{}{
+    \setlength{\leftmargin}{1.5em}
+  }
+}{
+  \end{list}
+}
+
+
+% Make parskips rather than indent with lists.
+\usepackage{parskip}
+\usepackage{titlesec}
+\titlespacing\section{0pt}{12pt plus 4pt minus 2pt}{4pt plus 2pt minus 2pt}
+\titlespacing\subsection{0pt}{12pt plus 4pt minus 2pt}{4pt plus 2pt minus 2pt}
+
+% Use fontawesome. Note: you'll need TeXLive 2015. Update.
+\usepackage{fontawesome}
+
+% Fancyhdr, as I tend to do with these personal documents.
+\usepackage{fancyhdr,lastpage}
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.0pt}
+\lhead{}
+\chead{}
+\rhead{}
+\lfoot{
+\cfoot{\scriptsize  John Tipton - CV }}
+\rfoot{\scriptsize \thepage/{\hypersetup{linkcolor=black}\pageref{LastPage}}}
+
+% Always load hyperref last.
+\usepackage{hyperref}
+\PassOptionsToPackage{usenames,dvipsnames}{color} % color is loaded by hyperref
+
+\hypersetup{unicode=true,
+            pdftitle={John Tipton:  CV (Curriculum Vitae)},
+            pdfauthor={John Tipton},
+            colorlinks=true,
+            linkcolor=blue,
+            citecolor=Blue,
+            urlcolor=blue,
+            breaklinks=true, bookmarks=true}
+\urlstyle{same}  % don't use monospace font for urls
+
+% Make AP style (kinda) dates for the updated/today field
+
+\usepackage{datetime}
+\newdateformat{apstylekinda}{%
+  \shortmonthname[\THEMONTH]. \THEDAY, \THEYEAR}
+
+\begin{document}
+
+
+\centerline{\huge \bf John Tipton}
+
+\vspace{2 mm}
+
+\hrule
+
+\vspace{2 mm}
+
+\moveleft.5\hoffset\centerline{Assistant Professor, Department of Mathematical Sciences}
+\moveleft.5\hoffset\centerline{309 Science and Engineering Building · University of Arkansas ·
+Fayetteville, AR, 72701}
+\moveleft.5\hoffset\centerline{ \faEnvelopeO \hspace{1 mm} \href{mailto:}{\tt \href{mailto:jrtipton@uark.edu}{\nolinkurl{jrtipton@uark.edu}}} \hspace{1 mm}      \faGlobe \hspace{1 mm} \href{http://www.jrtipton.com}{\tt www.jrtipton.com}    | \emph{Updated:} \apstylekinda\today} 
+
+\vspace{2 mm}
+
+\hrule
+
+
+\hypertarget{employment}{%
+\section{Employment}\label{employment}}
+
+\hypertarget{university-of-arkansas-department-of-mathematical-sciences}{%
+\subsection{\texorpdfstring{University of Arkansas \hfill Department of
+Mathematical
+Sciences}{University of Arkansas Department of Mathematical Sciences}}\label{university-of-arkansas-department-of-mathematical-sciences}}
+
+Assistant Professor \hfill 2017--present
+
+\hypertarget{colorado-state-university-department-of-statistics}{%
+\subsection{\texorpdfstring{Colorado State University \hfill Department
+of
+Statistics}{Colorado State University Department of Statistics}}\label{colorado-state-university-department-of-statistics}}
+
+Postdoctoral Researcher \hfill 2016--2017\\
+Graduate Research Assistant \hfill 2009-2016
+
+\hypertarget{education}{%
+\section{Education}\label{education}}
+
+\hypertarget{colorado-state-university-ph.d.-statistics-2016}{%
+\subsection{\texorpdfstring{Colorado State University, Ph.D.~Statistics
+\hfill 2016}{Colorado State University, Ph.D.~Statistics 2016}}\label{colorado-state-university-ph.d.-statistics-2016}}
+
+\hypertarget{colorado-state-university-m.s.-statistics-2011}{%
+\subsection{\texorpdfstring{Colorado State University, M.S. Statistics
+\hfill 2011}{Colorado State University, M.S. Statistics 2011}}\label{colorado-state-university-m.s.-statistics-2011}}
+
+\hypertarget{colorado-state-university-b.s.-mathematics-and-zoology-2005}{%
+\subsection{\texorpdfstring{Colorado State University, B.S. Mathematics
+and Zoology
+\hfill 2005}{Colorado State University, B.S. Mathematics and Zoology 2005}}\label{colorado-state-university-b.s.-mathematics-and-zoology-2005}}
+
+\hypertarget{assignment}{%
+\section{Assignment}\label{assignment}}
+
+Assigned to 40\% teaching, 40\% research, and 20\% service. My full
+teaching load is 2 courses per semester including development of new
+course materials. My research is focused on applied statistics and
+methodological statistics research with an emphasis on spatial,
+paleoclimate, and environmental applications.
+
+\hypertarget{publications}{%
+\section{Publications}\label{publications}}
+
+\hypertarget{published-and-in-review}{%
+\subsection{Published and in Review}\label{published-and-in-review}}
+
+\begin{itemize}
+\item
+  {[}15{]} John Tipton, Glenn Sharman, and Sam Johnstone (2020+).
+  Estimation of Sediment Mixing Distributions with Uncertainty
+  Quantification using Bayesian Nonparametric Modeling. In revision.
+  \href{https://github.com/jtipton25/mixing-manuscript}{{[}R code on
+  gitHub{]}}
+\item
+  {[}14{]} Ann Raiho, Michael Dietze, Andria Dawson, Christine R.
+  Rollinson, John Tipton, and Jason McLachlan. (2020+). Towards
+  understanding predictability in ecology: A forest gap model case
+  study. Global Change Biology. In review.
+  \href{https://www.biorxiv.org/content/10.1101/2020.05.05.079871v2.full.pdf}{{[}bioRxiv{]}}
+\item
+  {[}13{]} Manuel Chevalier et. al (2020). Pollen-based climate
+  reconstruction techniques for late Quaternary studies. Earth-Science
+  Reviews.
+  \href{https://doi.org/10.1016/j.earscirev.2020.103384}{{[}paper{]}}
+\item
+  {[}12{]} John Tipton, Mevin Hooten, Connor Nolan, Bob Booth, and Jason
+  McLachlan (2019). Predicting unobserved climate from compositional
+  data using multivariate Gaussian process inverse prediction. The
+  Annals of Applied Statistics. Vol 13, No.~4, pp.~2363-2388.
+  \href{https://projecteuclid.org/euclid.aoas/1574910048}{{[}paper{]}}\href{https://arxiv.org/abs/1903.05036}{{[}arXiv
+  preprint{]}}{[}\href{https://github.com/jtipton25/compositional-inverse-prediction}{R
+  code on gitHub}
+\item
+  {[}11{]} Connor Nolan, John Tipton, Robert K. Booth, Mevin B. Hooten,
+  and Stephen T. Jackson (2019). Comparing and improving methods for
+  reconstructing water table depth from testate amoebae. The Holocene.
+  \href{https://journals.sagepub.com/doi/10.1177/0959683619846969}{{[}paper{]}}\href{https://github.com/jtipton25/BayesComposition}{{[}R
+  code on gitHub{]}}
+\item
+  {[}10{]} Connor Nolan et. al.~(2018) Past and future global
+  transformation of terrestrial ecosystems under climate change.
+  Science. Volume 361, Issue 6405, August 31, pp.~920-923.
+  \href{http://science.sciencemag.org/content/361/6405/920}{{[}paper{]}}
+\item
+  {[}9{]} Erin Belval, Yu Wei, David Calkin, Crystal Stonesifer, Matt
+  Thompson and John Tipton (2017). Studying interregional wildland
+  engine assignments for large fire suppression. International Journal
+  of Wildland Fire.
+  \href{http://www.publish.csiro.au/WF/WF16162}{{[}paper{]}}
+\item
+  {[}8{]} John Tipton, Mevin Hooten, and Simon Goring (2017).
+  Reconstruction of spatio-temporal temperature processes from sparse
+  historical records using probabilistic principal component regression.
+  Advances in Statistical Climatology, Meteorology and Oceanography.
+  \href{http://www.adv-stat-clim-meteorol-oceanogr.net/3/1/2017/ascmo-3-1-2017.pdf}{{[}pdf{]}}
+  \href{https://github.com/jtipton25/observer}{{[}R code on gitHub{]}}
+\item
+  {[}7{]} Trevor Hefley, Kristin Broms, Brian Brost, Frances Buderman,
+  Shannon Kay, Henry Scharf, John Tipton, Perry Williams, and Mevin
+  Hooten (2017). The basis function approach to modeling dependent
+  ecological data. Ecology.
+  \href{http://www.stat.colostate.edu/~hooten/papers/pdf/Hefley_etal_Ecology_2017.pdf}{{[}pdf{]}}
+  {[}R code
+  \href{http://onlinelibrary.wiley.com/store/10.1002/ecy.1674/asset/supinfo/ecy1674-sup-0003-AppendixS3.pdf?v=1\&s=1ec1d5c25a2287b36029dd315184190d0c5f8c04}{S3},
+  \href{http://onlinelibrary.wiley.com/store/10.1002/ecy.1674/asset/supinfo/ecy1674-sup-0004-AppendixS4.pdf?v=1\&s=4c29dbe01f5521638315a3159c43971b30822d0c}{S4},
+  \&
+  \href{http://onlinelibrary.wiley.com/store/10.1002/ecy.1674/asset/supinfo/ecy1674-sup-0005-AppendixS5.pdf?v=1\&s=8bbe6b6f8165283cf91df19b528a34b8ee1ee6d4}{S5}{]}
+\item
+  {[}6{]} John Tipton, Mevin Hooten, Neil Pederson, Martin Tingley and
+  Daniel Bishop (2016). Reconstruction of late Holocene climate based on
+  tree growth and mechanistic hierarchical models. Environmetrics,
+  27(1):42-54.
+  \href{http://onlinelibrary.wiley.com/doi/10.1002/env.2368/abstract}{{[}pdf{]}}
+  \href{https://github.com/jtipton25/Mechanistic-Tree-Ring}{{[}R code on
+  gitHub{]}}
+\item
+  {[}5{]} Douglas Silver, Brett Johnson, William Pate, Kyle
+  Christianson, John Tipton, James Sherwood, Brian Smith, Yun Hao, and
+  Patrick Martinez (2016). Effect of net size on estimates of abundance,
+  size/age, and sex of Mysis diluviana. Journal of Great Lakes Research,
+  Volume 42, Issue 3, June 2016
+  \href{http://www.sciencedirect.com/science/article/pii/S038013301600040X?via\%3Dihub}{{[}paper{]}}
+  \href{http://jtipton25.github.io/mysis/}{{[}R code on gitHub{]}}
+\item
+  {[}4{]} John Tipton, Jean Opsomer, and Gretchen Moisen (2013).
+  Properties of endogenous post-stratified estimation using remote
+  sensing data. Remote Sensing of Environment, 139:130-137.
+  \href{https://www.fs.fed.us/rm/pubs_other/rmrs_2013_tipton_j001.pdf}{{[}pdf{]}}
+\item
+  {[}3{]} John Tipton, Gretchen Moisen, Paul Patterson, and Thomas
+  Jackson (2012). Sampling intensity and normalization: Exploring
+  cost-driving factors in nationwide mapping of tree canopy cover. In:
+  McWilliams, Will and Roesch, Frank, (compilers). 2010 Forest Inventory
+  and Analysis (FIA) Symposium.
+  \href{https://www.srs.fs.fed.us/pubs/gtr/gtr_srs157/gtr_srs157_201.pdf}{{[}pdf{]}}
+\item
+  {[}2{]} Thomas Jackson, Gretchen Moisen, Paul Patterson and John
+  Tipton (2012). Repeatability in photo-interpretation of tree canopy
+  cover and its effect on predictive mapping. In:McWilliams, Will and
+  Roesch, Frank, (compilers). 2010 Forest Inventory and Analysis (FIA)
+  Symposium.
+  \href{https://www.srs.fs.fed.us/pubs/gtr/gtr_srs157/gtr_srs157_189.pdf}{{[}pdf{]}}
+\item
+  {[}1{]} David Gammon, Myron Baker, and John Tipton (2005). Cultural
+  divergence within novel song in the black-capped chickadee (Poecile
+  atricapillus). The Auk, 122, 853-871.
+  \href{http://www.bioone.org/doi/abs/10.1642/0004-8038\%282005\%29122\%5B0853\%3ACDWNSI\%5D2.0.CO\%3B2}{{[}paper{]}}
+\end{itemize}
+
+\hypertarget{in-preparation}{%
+\subsection{In Preparation}\label{in-preparation}}
+
+\begin{itemize}
+\item
+  John Tipton, Basil Davis, Manuel Chevalier, and Philipp Sommer.
+  Spatio-temporal reconstruction of climate from pollen.
+\item
+  Kelly Heilman, Jason McLachlan, A. Carla Staver, John W.Williams,
+  David Mladenoff, Simon Goring, Christopher J. Paciorek, and John
+  Tipton. Loss of temperate savanna-forest bistability due to changes in
+  land-use.
+\item
+  John Tipton, Basil Davis, Manuel Chevalir, and Philipp Sommer.
+  Improving pollen reconstructions of climate using Polya-gamma data
+  augmentation.
+\item
+  John Tipton. Making Bayesian spatio-temporal models conjugate through
+  recursive Bayesian inference.
+\end{itemize}
+
+\hypertarget{presentations}{%
+\section{Presentations}\label{presentations}}
+
+\hypertarget{invited}{%
+\subsection{Invited}\label{invited}}
+
+\begin{itemize}
+\item
+  2019 -- November -- Presentation - University of Arkansas Industrial
+  Engineering INFORMS Seminar: Reducing the computational cost for
+  Bayesian modeling of non-Gaussian, noisy spatio-temporal data
+\item
+  2019 -- July -- Poster - Institute of Mathematical Statistics New
+  Researchers Conference: Spatio-temporal reconstruction of climate from
+  pollen data
+\item
+  2019 -- April -- Presentation - University of Missouri Statistics
+  Department: Spatio-temporal reconstruction of climate from pollen data
+\item
+  2018 -- November -- Presentation - University of Arkansas Department
+  of Geosciences: Don't let your statistics ruin the science that you
+  love
+\item
+  2018 -- September -- Presentation - Kansas State University Statistics
+  Department: Spatio-temporal reconstruction of climate from pollen data
+\item
+  2018 -- September -- Presentation - University of Arkansas Statistics
+  Seminar: Spatio-temporal reconstruction of climate from pollen data
+\item
+  2017 -- August -- Poster - ASA: Bayesian Multispecies Ecological
+  Models for Paleoclimate Reconstruction Using Inverse Prediction
+\item
+  2015 -- August -- Presentation - ASA: ENVR Student Paper Award:
+  Reconstruction of late Holocene climate based on tree growth and
+  mechanistic hierarchical models
+\item
+  2015 -- August -- Poster - ASA STATMOS: Reconstruction of late
+  Holocene climate based on tree growth and mechanistic hierarchical
+  models
+\item
+  2014 -- December -- Presentation - American Geophysical Union: A
+  statistical reconstruction of bivariate climate from tree ring
+  measurements using scientifically motivated process models
+\end{itemize}
+
+\hypertarget{contributed}{%
+\subsection{Contributed}\label{contributed}}
+
+\begin{itemize}
+\item
+  2019 -- August -- Presentation - ASA: Spatio-temporal reconstruction
+  of climate from pollen data
+\item
+  2018 -- August -- Presentation - ASA: Modeling Sediment Mixing using
+  Mixtures of Dirichlet Processes
+\item
+  2017 -- August -- Presentation - ASA: Reconstruction of
+  Spatio-Temporal Temperature from Sparse Historical Records Using
+  Robust Probabilistic Principal Component Regression
+\item
+  2017 -- December -- Poster: American Geophysical Union - co-author:
+  Comparing and improving reconstruction methods for proxies based on
+  compositional data
+\item
+  2017 -- December -- Presentation: American Geophysical Union -
+  co-author: Inferring biogeochemistry past: a millennial-scale
+  multimodel assimilation of multiple paleoecological proxies
+\item
+  2017 -- December -- Presentation: American Geophysical Union -
+  co-author: Uncertainty and inference in the world of paleoecological
+  data
+\item
+  2016 -- August -- Presentation - ASA: Inverting the Gaussian process:
+  A Bayesian multispecies ecological model for paleoclimate
+  reconstruction
+\item
+  2016 -- August -- Poster - ASA: Robust spatio-temporal reconstruction
+  of temperature processes from sparse historical data
+\item
+  2014 -- December -- Poster - American Geophysical Union - co-author:
+  Effects of European land use on contemporary tree-climate
+  relationships in the northeastern United States: Implications for
+  predictive models
+\item
+  2014 -- August -- Presentation - ASA: Reconstruction of historical
+  climate using a reduced rank predictive process model
+\item
+  2012 -- August -- Presentation - ASA: Endogenous post-stratification
+  using random forests
+\item
+  2012 -- December -- Presentation - Forest Inventory and Analysis
+  Symposium: Properties of the endogenous post-stratified estimator
+  using a random forest model
+\end{itemize}
+
+\hypertarget{funding}{%
+\section{Funding}\label{funding}}
+
+\hypertarget{external}{%
+\subsection{External}\label{external}}
+
+\begin{itemize}
+\tightlist
+\item
+  2019-2024 -- National Science Foundation. Multidisciplinary Data
+  Science Education to Prepare STEM Students for Data Science Careers
+  Award: DUE 1930532 \$1,000,000 (role: Senior Personnel)
+\end{itemize}
+
+\hypertarget{not-funded}{%
+\subsubsection{Not Funded}\label{not-funded}}
+
+\hypertarget{internal}{%
+\subsection{Internal}\label{internal}}
+
+\begin{itemize}
+\tightlist
+\item
+  2019-2022 -- University of Arkansas Chancellor's Grant. Computational
+  Capsule Neural Network Algorithms for Enabling Terahertz Detection of
+  Breast Cancer. \$53,197 (role: co-PI)
+\end{itemize}
+
+\hypertarget{teaching-experience}{%
+\section{Teaching Experience}\label{teaching-experience}}
+
+\hypertarget{university-of-arkansas}{%
+\subsection{University of Arkansas}\label{university-of-arkansas}}
+
+Responsible for course redesign and/or development for DASC 1104, DASC
+2594, STAT 3003, STAT 4003, STAT 4043, STAT 5003 STAT 5383, and STAT
+5413. Also a member of the data science curriculum development committee
+developing 54 new credit hours and a member of the data science advisory
+board. As a member of the data science curriculum committee, I created
+lesson and unit plans for DASC 1104 Programming Languages for Data
+Sciene, DASC 2594 Multivariable Math for Data Scientists, and DASC 3213
+Statistical Learning
+
+\begin{itemize}
+\tightlist
+\item
+  DASC 1104 Programming Languages for Data Science (Fall 2020)
+\item
+  DASC 2594 Multivariable Math for Data Scientists (Spring 2021)
+\item
+  STAT 2303 Principles of Statistics (Fall 2017)
+\item
+  STAT 3003 Statistical Methods (Spring 2021)
+\item
+  STAT 5383 Time Series (Fall 2017)
+\item
+  STAT 4043 Survey Sampling (Spring 2018, Spring 2019)
+\item
+  STAT 4003 Statistical Methods (Fall 2018, Spring 2019, Fall 2019)
+\item
+  STAT 5003 Statistical Methods (Spring 2020, Fall 2020)
+\item
+  STAT 5413 Spatial Statistics (Spring 2020)
+\end{itemize}
+
+\hypertarget{colorado-state-university}{%
+\subsection{Colorado State University}\label{colorado-state-university}}
+
+\hypertarget{instructor}{%
+\subsubsection{Instructor}\label{instructor}}
+
+\begin{itemize}
+\tightlist
+\item
+  STAT 307 Intro to Biostatistics, three semesters
+\item
+  STAT 204 Business Statistics, two semesters
+\end{itemize}
+
+\hypertarget{teaching-assistant}{%
+\subsubsection{Teaching assistant}\label{teaching-assistant}}
+
+\begin{itemize}
+\tightlist
+\item
+  STAT 472 Statistical Consulting, one semester
+\item
+  STAT 301 Intro to Statistics Online, one semester
+\item
+  STAT 204 Business Statistics, one semester
+\end{itemize}
+
+\hypertarget{workshops}{%
+\subsubsection{Workshops}\label{workshops}}
+
+\begin{itemize}
+\tightlist
+\item
+  Building Capacity in Bayesian Modeling for Ecologists (NSF), 2 days
+  \hfill 2014, 2016
+\item
+  Workshop on Parallel Computing, CU/CSU, \hfill 2015
+\item
+  R Workshop (CSU-CCFRWU), 1 day \hfill 2013, 2015
+\end{itemize}
+
+\hypertarget{service}{%
+\section{Service}\label{service}}
+
+\begin{itemize}
+\tightlist
+\item
+  2017-2020: Interdisciplinary committee for the creation of an
+  undergraduate degree in data science
+\item
+  2019-present: Department of Mathematical Sciences undergraduate
+  curriculum committee
+\item
+  2019-present: Data science undergraduate curriculum committee
+\end{itemize}
+
+\hypertarget{honorsawards}{%
+\section{Honors/Awards}\label{honorsawards}}
+
+\begin{itemize}
+\tightlist
+\item
+  University of Arkansas New Faculty Commendation for Teaching
+  Commitment \hfill 2018
+\item
+  Colorado State University Statistics Department Poster Symposium -
+  Best Poster \hfill 2016
+\item
+  American Statistical Association ENVR Student Paper Competition Award
+  \hfill 2015
+\item
+  Thomas J. and Eileen C. Boardman Statistical Consulting Award
+  \hfill 2014
+\item
+  American Statistical Association Student Travel Award \hfill 2014
+\item
+  American Statistical Association Wray Jackson Smith Award \hfill 2012
+\end{itemize}
+
+\hypertarget{software-and-computing}{%
+\section{Software and Computing}\label{software-and-computing}}
+
+\hypertarget{r-packages}{%
+\subsection{R packages}\label{r-packages}}
+
+\begin{itemize}
+\tightlist
+\item
+  \href{https://github.com/jtipton25/BayesMRA}{R package BayesMRA --
+  available on CRAN} \hfill 2020
+\item
+  \href{https://github.com/jtipton25/BayesComposition}{gitHub R package
+  Bayescomposition} \hfill 2019
+\item
+  \href{https://github.com/jtipton25/stPollen}{gitHub R package
+  stPollen} \hfill 2019
+\end{itemize}
+
+\hypertarget{data-tutorials-and-reproducibility}{%
+\subsection{Data Tutorials and
+Reproducibility}\label{data-tutorials-and-reproducibility}}
+
+\begin{itemize}
+\item
+  \href{https://github.com/jtipton25/compositional-inverse-prediction/}{GitHub
+  tutorial} for: John Tipton, Mevin Hooten, Connor Nolan, Bob Booth, and
+  Jason McLachlan. (2019) Predicting unobserved climate from
+  compositional data using multivariate Gaussian process inverse
+  prediction. \textit{Annals of Applied Statistics}
+\item
+  \href{https://jtipton25.github.io/mysis/}{GitHub tutorial} for:
+  Douglas Silver, Brett Johnson, William Pate, Kyle Christianson, John
+  Tipton, James Sherwood, Brian Smith, Yun Hao, and Patrick Martinez.
+  (2016). Effect of net size on estimates of abundance, size/age, and
+  sex of \textit{Mysis diluviana}.
+  \textit{Journal of Great Lakes Research}, Volume 42, Issue 3.
+\item
+  \href{https://github.com/jtipton25/Mechanistic-Tree-Ring}{GitHub
+  tutorial and R software} for: John Tipton, Mevin Hooten, Neil
+  Pederson, Martin Tingley and Daniel Bishop. (2016). Reconstruction of
+  late Holocene climate based on tree growth and mechanistic
+  hierarchical models. \textit{Environmetrics}, 27(1):42-54.
+\end{itemize}
+
+\hypertarget{computing-expertise}{%
+\subsection{Computing Expertise}\label{computing-expertise}}
+
+\begin{multicols}{3}
+\begin{itemize}
+\item \textsc{R} 
+\item \textsc{C++}
+\item \LaTeX 
+\item \textsc{Linux}
+\item \textsc{python}
+\end{itemize}
+\end{multicols}
+
+\hypertarget{student-advising}{%
+\section{Student Advising}\label{student-advising}}
+
+\hypertarget{graduate-students-current}{%
+\subsection{Graduate Students
+(Current)}\label{graduate-students-current}}
+
+\begin{itemize}
+\tightlist
+\item
+  Jean Remy Habima (PhD-Mathematics), Adviser
+\item
+  Surya Lamichhane (PhD-Mathematics), Committee Member
+\item
+  Muhenned Abdulasalim (MS-STAN), Adviser
+\item
+  Thuy Scanlon (MS-STAN), Adviser
+\item
+  Ariel Mundo (PhD-Biomedical Engineer), Committee Member
+\item
+  Leah Bayer (PhD-Biology), Committee Member
+\item
+  Chang Liu (PhD-Environmental Dynamics), Proposal Committee Member
+\end{itemize}
+
+\hypertarget{graduate-students-graduated}{%
+\subsection{Graduate Students
+(Graduated)}\label{graduate-students-graduated}}
+
+\begin{itemize}
+\tightlist
+\item
+  Pauline Morin (MS-Food Science), Committee Member \hfill 2020
+\item
+  Seyed Tabari (MS-STAN), Committee Member \hfill 2020
+\item
+  Philipp Sommer (PhD-Geosciences, University of Lausanne),
+  \textbf{Examiner} \hfill 2019
+\item
+  Ruizhe (Rachel) Yin (MS-STAN), \textbf{Committee Chair} \hfill 2019
+\item
+  Hua Zhong (MS-STAN), \textbf{Committee Chair} \hfill 2019
+\item
+  Michael Harris (MS-STAN), Committee Member \hfill 2019
+\item
+  Josh Price (MS-STAN), Committee Member \hfill 2019
+\item
+  Md Kamrul Hasan Khan (MS-STAN), Committee Member \hfill 2018
+\item
+  Kai Cui (MS-STAN), Committee Member \hfill 2018
+\item
+  Michael Ellis (MS-STAN), Committee Member \hfill 2018
+\end{itemize}
+
+\hypertarget{undergraduate-students}{%
+\subsection{Undergraduate Students}\label{undergraduate-students}}
+
+\begin{itemize}
+\tightlist
+\item
+  Abigail Rhodes (Honors)
+\item
+  Caleigh Christensen (Honors)
+\item
+  Brenna Frandson (Honors)
+\end{itemize}
+
+\hypertarget{manuscript-peer-review}{%
+\section{Manuscript Peer Review}\label{manuscript-peer-review}}
+
+Annals of Applied Statistics (4 times); Computational Statistics and
+Data Analysis (2 times); Environmental and Ecological Statistics (1
+time); Journal of Agricultural, Biological, and Environmental Statistics
+(3 times); Journal of Geophysical Research - Biogeosciences (1 time);
+Ecological Applications (1 time); Freshwater Science (1 time); Climate
+of the Past (1 time); Chemical Geology (1 time); Arctic, Antarctic, and
+Alpine Research (1 time); Science (1 time); Nature Communications (1
+time)
+
+\end{document}
