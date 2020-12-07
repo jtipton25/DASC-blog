@@ -8,32 +8,21 @@
     <language>en-us</language>
     <lastBuildDate>Mon, 07 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Covid Spring</title>
+      <link>/2020/12/07/covid-spring/</link>
+      <pubDate>Mon, 07 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/2020/12/07/covid-spring/</guid>
+      <description>Data Using data available on GitHub from the NY Times, I am going to investigate the ongoing Covid-19 pandemic in the United States. The variables in the Covid-19 data include the date, the state, the federal id code (fips), the number of cases recorded in the state for the given date, and the number of deaths recorded in the state for the given date. The US population data is from the US Census Bureau website.</description>
+    </item>
+    
+    <item>
       <title>Malaria over time</title>
       <link>/2020/12/07/malaria/</link>
       <pubDate>Mon, 07 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>/2020/12/07/malaria/</guid>
       <description>Malaria deaths For this project, I am examining the malaria deaths by age dataset contained in the malaria_deaths_age.csv file on the Tidy Tuesday website. The data consists of 30780 observations of 5 variables. The variable entity is a factor with 228 levels that represents the region for the deaths. The variable code is a factor with 196 levels which represents a three letter code for the country/region. The variable year is a discrete integer variable that records the years between 1990 and 2016.</description>
-    </item>
-    
-    <item>
-      <title>Exploration of NFL data</title>
-      <link>/2020/12/02/exploration-of-nfl-data/</link>
-      <pubDate>Wed, 02 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/2020/12/02/exploration-of-nfl-data/</guid>
-      <description># load NFL data From this data …</description>
-    </item>
-    
-    <item>
-      <title>My first post</title>
-      <link>/2020/12/02/my-first-post/</link>
-      <pubDate>Wed, 02 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/2020/12/02/my-first-post/</guid>
-      <description>My first post.
-I like the penguins
-library(tidyverse) library(palmerpenguins) glimpse(penguins) library(here) ## here() starts at /home/dasc/DASC-blog dat &amp;lt;- read_csv(here(&amp;quot;data&amp;quot;, &amp;quot;2012-18_playerBoxScore.csv&amp;quot;)) ## Parsed with column specification: ## cols( ## .default = col_double(), ## gmDate = col_date(format = &amp;quot;&amp;quot;), ## gmTime = col_time(format = &amp;quot;&amp;quot;), ## seasTyp = col_character(), ## playLNm = col_character(), ## playFNm = col_character(), ## teamAbbr = col_character(), ## teamConf = col_character(), ## teamDiv = col_character(), ## teamLoc = col_character(), ## teamRslt = col_character(), ## offLNm1 = col_character(), ## offFNm1 = col_character(), ## offLNm2 = col_character(), ## offFNm2 = col_character(), ## offLNm3 = col_character(), ## offFNm3 = col_character(), ## playDispNm = col_character(), ## playStat = col_character(), ## playPos = col_character(), ## playBDate = col_date(format = &amp;quot;&amp;quot;) ## # .</description>
     </item>
     
   </channel>
