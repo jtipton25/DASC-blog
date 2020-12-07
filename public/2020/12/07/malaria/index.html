@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.79.0" />
+
+
+<title>Malaria over time - DASC 1104 blog</title>
+<meta property="og:title" content="Malaria over time - DASC 1104 blog">
+
+
+  <link href='/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="https://github.com/jtipton25">GitHub</a></li>
+    
+    <li><a href="/resume-example.pdf">Resume</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">7 min read</span>
+    
+
+    <h1 class="article-title">Malaria over time</h1>
+
+    
+    <span class="article-date">2020-12-07</span>
+    
+
+    <div class="article-content">
+      <pre><code class="language-{r" data-lang="{r">library(here)
+library(ggplot2)
+library(tidyverse)
+library(readxl)
+library(mgcv)
+library(knitr)
+
+knitr::opts_chunk$set(echo = TRUE, tidy = FALSE)
+dat1 &lt;- read_csv(here::here(&quot;data&quot;, &quot;tidytuesday&quot;, &quot;data&quot;, &quot;2018&quot;, &quot;2018-11-13&quot;, &quot;malaria_deaths.csv&quot;))
+dat2 &lt;- read_csv(here::here(&quot;data&quot;, &quot;tidytuesday&quot;, &quot;data&quot;, &quot;2018&quot;, &quot;2018-11-13&quot;, &quot;malaria_deaths_age.csv&quot;))
+dat3 &lt;- read_csv(here::here(&quot;data&quot;, &quot;tidytuesday&quot;, &quot;data&quot;, &quot;2018&quot;, &quot;2018-11-13&quot;, &quot;malaria_inc.csv&quot;))
+dat_codes &lt;- read_csv(here::here(&quot;data&quot;, &quot;tidytuesday&quot;, &quot;data&quot;, &quot;2018&quot;, &quot;2018-11-13&quot;, &quot;country-codes.csv&quot;))
+
+## rename deaths from malaria per 100K
+dat1 &lt;- rename(dat1, deaths_per_100K = `Deaths - Malaria - Sex: Both - Age: Age-standardized (Rate) (per 100,000 people)`)
+
+# relabel row id
+dat2 &lt;- rename(dat2, row_id = X1)
+
+## rename the incidence of malaria per 1000 population at risk
+dat3 &lt;- rename(dat3, incidence_per_1000_at_risk = `Incidence of malaria (per 1,000 population at risk) (per 1,000 population at risk)`)
+</code></pre><h1 id="malaria-deaths">Malaria deaths</h1>
+<p>For this project, I am examining the malaria deaths by age dataset contained in the <code>malaria_deaths_age.csv</code> file on the Tidy Tuesday website. The data consists of <code>r nrow(dat2)</code> observations of <code>r ncol(dat2)-1</code> variables. The variable <code>entity</code> is a factor with 228 levels that represents the region for the deaths. The variable <code>code</code> is a factor with 196 levels which represents a three letter code for the country/region. The variable <code>year</code> is a discrete integer variable that records the years between <code>r min(dat2$year)</code> and <code>r max(dat2$year)</code>. The variable <code>age_group</code> is a discrete ordered factor with 5 levels that groups the population into age groups under 5, 5-14, 15-49, 50-69 and 70 or older. The variable <code>deaths</code> records the number of deaths from malaria for each region, year, and age group.  Initial exploration shows that the largest variability in the number of deaths occurs across age groups with the largest number of deaths occurring in children under 5. Other variability in deaths occurs when examining death rates by region.</p>
+<p>The second dataset we use to understand malaria is the incidence rate of malaria given in the <code>malaria_inc.csv</code> file on the Tidy Tuesday website. The malaria incidence rate is the average number of people who contract malaria per 1000 people at risk. The malaria incidence dataset has 508 observations of 4 variables: the variable <code>Entity</code>, which is a factor with 127 levels, that represents the region for the malaria cases, the variable <code>Code</code>, which is a factor with 101 levels, that represents a three letter code for the country/region, the variable <code>year</code>, which is a discrete integer variable that records the years between <code>r min(dat3$Year)</code> and <code>r max(dat3$Year)</code> in an interval of 5 years, and the variable <code>Incidence</code> which records the number of malaria cases per 1000 people at risk.</p>
+<p>To perform our analyses, we need to filter out the data that does not come from a country. These include the following:</p>
+<pre><code class="language-{r," data-lang="{r,">non_countries &lt;- c(&quot;Andean Latin America&quot;, &quot;Australasia&quot;, &quot;Caribbean&quot;, &quot;Central Asia&quot;, &quot;Central Europe&quot;, &quot;Central Latin America&quot;, &quot;Central Sub-Saharan Africa&quot;, &quot;East Asia&quot;, &quot;Eastern Europe&quot;, &quot;Eastern Sub-Saharan Africa&quot;, &quot;High SDI&quot;, &quot;High-income Asia Pacific&quot;, &quot;High-middle SDI&quot;, &quot;Latin America and Caribbean&quot;, &quot;Low SDI&quot;, &quot;Low-middle SDI&quot;, &quot;Middle SDI&quot;, &quot;North Africa and Middle East&quot;, &quot;North America&quot;, &quot;Oceania&quot;, &quot;South Asia&quot;, &quot;Southeast Asia&quot;, &quot;Southern Latin America&quot;, &quot;Southern Sub-Saharan Africa&quot;, &quot;Sub-Saharan Africa&quot;, &quot;Tropical Latin America&quot;, &quot;Western Europe&quot;, &quot;Western Sub-Saharan Africa&quot;, &quot;World&quot;) 
+</code></pre><!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h2 id="question-1">Question 1:</h2>
+<p>First, is there a significant difference in malaria deaths by age group. If so, which groups are different. First, we summarize the annual deaths by age group.</p>
+<pre><code class="language-{r," data-lang="{r,">## factor in increasing ages
+age_levels &lt;- c(&quot;Under 5&quot;, &quot;5-14&quot;, &quot;15-49&quot;, &quot;50-69&quot;, &quot;70 or older&quot;)
+
+dat2 %&gt;%
+  mutate(age_group = fct_relevel(age_group, age_levels)) %&gt;%
+  filter(!(entity %in% non_countries)) %&gt;%
+  group_by(age_group) %&gt;%
+  summarize(total_deaths = sum(deaths),
+            sd_deaths = sd(deaths),
+            count = n()) %&gt;%
+  mutate(prop_deaths = total_deaths / sum(total_deaths))
+</code></pre><p>From the summary table, we see that the Under 5 age group is the largest proportion of deaths (76.7%) with the next highest death rate fo the 5-14 age group. The dataset shows that there is a very large amount of variability around total deaths. Next, we visualize this result to better highlight the differences. However, the data is really hard to visualize on the original data scale.</p>
+<pre><code class="language-{r," data-lang="{r,">dat2 %&gt;%
+  mutate(age_group = fct_relevel(age_group, age_levels)) %&gt;%
+  filter(!(entity %in% non_countries)) %&gt;%
+  mutate(age_group = fct_relevel(age_group, age_levels)) %&gt;%
+  filter(!(entity %in% non_countries)) %&gt;%
+  ggplot(aes(x = age_group, y = deaths)) +
+  geom_boxplot() +
+  geom_point(position = &quot;jitter&quot;, alpha = 0.1)
+</code></pre><p>There seems to be a pretty interesting grouping happening. Maybe this is related to country/region?</p>
+<h2 id="question-2">Question 2:</h2>
+<p>Second, I want to test whether the death rate from malaria changed over time?</p>
+<pre><code class="language-{r," data-lang="{r,">dat2 %&gt;%
+  filter(!(entity %in% non_countries)) %&gt;%
+  group_by(year) %&gt;%
+  summarize(total_deaths = sum(deaths)) %&gt;%
+  ggplot(aes(x = year, y = total_deaths)) +
+  geom_point() +
+  stat_smooth(method = &quot;gam&quot;) +
+  ylim(c(0, 1100000)) +
+  ggtitle(&quot;Total Deaths&quot;)
+
+## plot time varying response
+dat2 %&gt;%
+  filter(!(entity %in% non_countries)) %&gt;%
+  group_by(year, age_group) %&gt;%
+  summarize(total_deaths = sum(deaths)) %&gt;%
+  mutate(age_group = fct_relevel(age_group, age_levels)) %&gt;% 
+  ggplot(aes(x = year, y = total_deaths, group = age_group, color = age_group)) +
+  geom_point() +
+  stat_smooth(method = &quot;gam&quot;, se = FALSE) +
+  # stat_smooth(method = &quot;lm&quot;) +
+  ylim(c(0, 1100000)) +
+  ggtitle(&quot;Deaths by age group&quot;)
+</code></pre><p>From these graphics, it appears that there is a change in total deaths over time, with an increase in young child mortality until the mid 2000s and then a relatively rapid decrease in child mortality in the late 2000s and 2010s.</p>
+<p>To get a better understanding of the mortality patterns, I will plot the total mortality by country. To visualize this, I will group the country-level data by region.</p>
+<pre><code class="language-{r," data-lang="{r,">dat2 %&gt;%
+  filter(!(entity %in% non_countries)) %&gt;%
+  left_join(dat_codes, by = c(&quot;code&quot; = &quot;alpha-3&quot;)) %&gt;%
+  group_by(year, entity, region) %&gt;%
+  ## remove the NA values corresponding to the British Isles
+  filter(!is.na(region)) %&gt;%
+  summarize(total_deaths = sum(deaths)) %&gt;%
+  ggplot(aes(x = year, y = total_deaths, group = entity, color = entity)) +
+  geom_line() +
+  facet_wrap(~ region) +
+  ggtitle(&quot;Total Deaths&quot;) +
+  theme(legend.position = &quot;none&quot;)
+
+</code></pre><p>Form this graphic, we can see that the African continent has been the primary driver of Malaria deaths with some deaths in Asia. We also see a large drop in Malaria deaths in the mid 2000s for many African countries.</p>
+<p>This leads to an interesting question: What are the countries that have had the highest Malaria deaths during the study period?</p>
+<pre><code class="language-{r," data-lang="{r,">dat2 %&gt;%
+  mutate(age_group = fct_relevel(age_group, age_levels)) %&gt;%
+  filter(!(entity %in% non_countries)) %&gt;%
+  group_by(entity) %&gt;%
+  summarize(total_deaths = sum(deaths)) %&gt;%
+  arrange(desc(total_deaths))
+</code></pre><p>The highest Malaria deaths occurred in Nigeria, Democratic Republic of Congo, India, and down the line. This is not surprising as these are the largest countries in the tropical region where the <em>Anopheles</em> mosquitoes that spread Malaria live.</p>
+<h2 id="question-3">Question 3:</h2>
+<p>The third question is whether the incidence of malaria per 100K people at risk changed over time? This is a better indicator of risk as it is the same across countries with large and small populations.</p>
+<pre><code class="language-{r," data-lang="{r,">dat3 %&gt;%
+  filter(!(Entity %in% non_countries)) %&gt;%
+  group_by(Year) %&gt;%
+  # summarize(mean_incidence = mean(incidence_per_1000_at_risk)) %&gt;%
+  ggplot(aes(x = Year, y = incidence_per_1000_at_risk)) +
+  geom_point() +
+  stat_summary(fun = &quot;mean&quot;, geom = &quot;line&quot;, color = &quot;red&quot;)
+  ggtitle(&quot;Malaria incidence per 100K&quot;)
+
+</code></pre><p>From this graphics, it appears that there is a decrease in Malaria incidence over time.</p>
+<p>To get a better understanding of the Malaria incidence patterns, I will plot the incidence over time by country To visualize this, I will group the country-level data by region.</p>
+<pre><code class="language-{r," data-lang="{r,">dat3 %&gt;%
+  filter(!(Entity %in% non_countries)) %&gt;%
+  left_join(dat_codes, by = c(&quot;Code&quot; = &quot;alpha-3&quot;)) %&gt;%
+  group_by(Year, Entity, region) %&gt;%
+  ## remove the NA values corresponding to the British Isles
+  filter(!is.na(region)) %&gt;%
+  ggplot(aes(x = Year, y = incidence_per_1000_at_risk, group = Entity, color = Entity)) +
+  geom_line() +
+  facet_wrap(~ region) +
+  ggtitle(&quot;Total Deaths&quot;) +
+  theme(legend.position = &quot;none&quot;)
+</code></pre><p>Form this graphic, we can see that the African continent has the highest incidence of Malaria although in Asia, one country has had a very large decrease in Malaria incidence. The incidence rates in Africa have been slowly declining.</p>
+<p>This leads to an interesting question: What are the countries that have had the highest Malaria incidence during 2000?</p>
+<pre><code class="language-{r," data-lang="{r,">dat3 %&gt;%
+  filter(!(Entity %in% non_countries)) %&gt;%
+  filter(Year == &quot;2000&quot;) %&gt;%
+  arrange(desc(incidence_per_1000_at_risk))
+</code></pre><p>The highest Malaria incidence in 2000 was in Turkey, with many African countries also having high incidence.</p>
+<p>We can compare this to 2015 to see what has changed:</p>
+<pre><code class="language-{r," data-lang="{r,">dat3 %&gt;%
+  filter(!(Entity %in% non_countries)) %&gt;%
+  filter(Year == &quot;2015&quot;) %&gt;%
+  arrange(desc(incidence_per_1000_at_risk))
+</code></pre><p>In 2015, the countries with the highest Malaria incidence have changed but are all in Africa. The overall Malaria incience in the top-10 most affected countries has also decreased.</p>
+<h2 id="conclusion">Conclusion:</h2>
+<p>TBD</p>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="/index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+<script src="/js/math-code.js"></script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+    
+  </body>
+</html>
+
