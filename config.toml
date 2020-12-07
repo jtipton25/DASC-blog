@@ -36,7 +36,7 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_cache$", "\\.knit\\.md$", "\\.utf8\
     favicon = "favicon.ico"
 
     [params.logo]
-    url = "logo.png"
+    url = "tipton-headshot.jpg"
     width = 50
     height = 50
     alt = "Logo"
